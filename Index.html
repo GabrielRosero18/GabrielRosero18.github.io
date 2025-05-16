@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio - Desarrollador</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Root palette: shades of blue */
+    :root {
+      --blue-dark: #0a3d62;
+      --blue-primary: #1e90ff;
+      --blue-light: #74b9ff;
+      --blue-lighter: #dfe6e9;
+      --white: #ffffff;
+      --gray-dark: #2d3436;
+      --gray-medium: #636e72;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: var(--blue-lighter);
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--blue-dark);
+      color: var(--white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: default;
+      user-select: none;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 2rem;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: var(--blue-light);
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: var(--white);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgb(30 144 255 / 0.15);
+    }
+
+    section h2 {
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--blue-primary);
+      padding-bottom: 0.3rem;
+      display: inline-block;
+    }
+
+    /* Inicio Section */
+    #inicio {
+      text-align: center;
+    }
+
+    #inicio img.profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--blue-primary);
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 8px rgb(30 144 255 / 0.5);
+    }
+
+    #inicio h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--blue-dark);
+    }
+
+    #inicio p.subtitle {
+      font-size: 1.2rem;
+      color: var(--blue-primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    #inicio p.description {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--gray-medium);
+    }
+
+    /* Proyectos Section */
+    .project-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-item {
+      background: var(--blue-lighter);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgb(30 144 255 / 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .project-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgb(30 144 255 / 0.35);
+    }
+
+    .project-item img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      object-fit: cover;
+      height: 140px;
+    }
+
+    .project-item h3 {
+      margin: 0 0 0.5rem;
+      color: var(--blue-dark);
+      font-size: 1.2rem;
+    }
+
+    .project-item p {
+      color: var(--gray-dark);
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .project-item a {
+      margin-top: 0.75rem;
+      color: var(--blue-primary);
+      font-weight: 600;
+      text-decoration: none;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .project-item a:hover,
+    .project-item a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Experience Section */
+    .experience-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .experience-item {
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--blue-lighter);
+    }
+
+    .experience-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--blue-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .experience-duration {
+      color: var(--blue-primary);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-left: auto;
+    }
+
+    .experience-desc {
+      margin-top: 0.3rem;
+      color: var(--gray-medium);
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--blue-dark);
+      color: var(--white);
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header nav {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo"><i class="fa fa-code"></i> Mi Portafolio</div>
+      <ul>
+        <li><a href="#inicio"><i class="fa fa-home"></i> Inicio</a></li>
+        <li><a href="#proyectos"><i class="fa fa-folder-open"></i> Proyectos</a></li>
+        <li><a href="#academica"><i class="fa fa-graduation-cap"></i> Experiencia Académica</a></li>
+        <li><a href="#personal"><i class="fa fa-briefcase"></i> Experiencia Personal</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" aria-label="Sección de inicio">
+      <img
+        src="https://avatars.githubusercontent.com/u/583231?v=4"
+        alt="Foto de perfil"
+        class="profile-img"
+      />
+      <h1>Gabriel Rosero</h1>
+      <p class="subtitle">Estudiante Ingeneria de sistemas</p>
+      <p class="description">
+        Apasionado por crear aplicaciones web modernas, eficientes y accesibles. 
+        Con experiencia en JavaScript, React, Node.js y bases de datos. Siempre dispuesto a aprender nuevas tecnologías y enfrentar retos complejos.
+      </p>
+    </section>
+
+    <section id="proyectos" aria-label="Sección de proyectos">
+      <h2><i class="fa fa-folder-open"></i> Proyectos Destacados</h2>
+      <ul class="project-list">
+        <li class="project-item">
+          <img src="https://via.placeholder.com/300x140.png?text=Proyecto+1" alt="Imagen del proyecto Uno"/>
+          <h3>Gestor de Tareas</h3>
+          <p>Aplicación para organizar tareas diarias con interfaz intuitiva, soporte multiplataforma y notificaciones.</p>
+          <a href="#" target="_blank" rel="noopener"><i class="fa fa-external-link-alt"></i> Ver proyecto</a>
+        </li>
+        <li class="project-item">
+          <img src="https://via.placeholder.com/300x140.png?text=Proyecto+2" alt="Imagen del proyecto Dos"/>
+          <h3>Blog Personal</h3>
+          <p>Plataforma de blog con editor Markdown, gestión de usuarios y diseño responsive adaptado a dispositivos móviles.</p>
+          <a href="#" target="_blank" rel="noopener"><i class="fa fa-external-link-alt"></i> Ver proyecto</a>
+        </li>
+        <li class="project-item">
+          <img src="https://via.placeholder.com/300x140.png?text=Proyecto+3" alt="Imagen del proyecto Tres"/>
+          <h3>Dashboard Analítico</h3>
+          <p>Dashboard para visualización dinámica de datos con gráficos interactivos usando D3.js y Chart.js.</p>
+          <a href="#" target="_blank" rel="noopener"><i class="fa fa-external-link-alt"></i> Ver proyecto</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="academica" aria-label="Experiencia académica">
+      <h2><i class="fa fa-graduation-cap"></i> Experiencia Académica</h2>
+      <ul class="experience-list">
+        <li class="experience-item">
+          <div class="experience-title">
+            <i class="fa fa-university"></i> Universidad Nacional
+            <span class="experience-duration">2016 - 2021</span>
+          </div>
+          <div class="experience-desc">
+            Licenciatura en Ingeniería en Sistemas Computacionales. Desarrollo de proyectos con metodologías ágiles y programación avanzada.
+          </div>
+        </li>
+        <li class="experience-item">
+          <div class="experience-title">
+            <i class="fa fa-laptop-code"></i> Curso de Desarrollo Web
+            <span class="experience-duration">2022</span>
+          </div>
+          <div class="experience-desc">
+            Formación intensiva en tecnologías front-end y back-end, incluyendo JavaScript, React, Node.js y bases de datos NoSQL.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="personal" aria-label="Experiencia personal">
+      <h2><i class="fa fa-briefcase"></i> Experiencia Personal</h2>
+      <ul class="experience-list">
+        <li class="experience-item">
+          <div class="experience-title">
+            <i class="fa fa-briefcase"></i> Desarrollador Freelance
+            <span class="experience-duration">2021 - Presente</span>
+          </div>
+          <div class="experience-desc">
+            Desarrollo de aplicaciones web para clientes variados, con especial atención en experiencias de usuario y rendimiento óptimo.
+          </div>
+        </li>
+        <li class="experience-item">
+          <div class="experience-title">
+            <i class="fa fa-people-arrows"></i> Mentor de Programación
+            <span class="experience-duration">2020 - Presente</span>
+          </div>
+          <div class="experience-desc">
+            Apoyo y mentoría a estudiantes y desarrolladores junior para mejorar sus habilidades de codificación y proyectos personales.
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Gabriel Rosero - Todos los derechos reservados
+  </footer>
+</body>
+</html>
+
